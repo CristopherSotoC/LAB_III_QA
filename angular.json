@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "LAB_III": {
+    "proyecto_QA": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/lab-iii",
+            "outputPath": "dist/proyecto-qa",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "LAB_III:build:production"
+              "browserTarget": "proyecto_QA:build:production"
             },
             "development": {
-              "browserTarget": "LAB_III:build:development"
+              "browserTarget": "proyecto_QA:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "LAB_III:build"
+            "browserTarget": "proyecto_QA:build"
           }
         },
         "test": {
@@ -94,8 +94,56 @@
             ],
             "scripts": []
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "proyecto_QA:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "proyecto_QA:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "proyecto_QA:serve",
+            "watch": true,
+            "headless": false,
+            "testingType": "component"
+          },
+          "configurations": {
+            "development": {
+              "devServerTarget": "proyecto_QA:serve:development"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "proyecto_QA:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "proyecto_QA:serve:production"
+            }
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "6236a6b4-f0d6-42d6-942e-c35ab636a980"
   }
 }
