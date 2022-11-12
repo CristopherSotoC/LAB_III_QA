@@ -8,9 +8,13 @@ describe('Clients', function () {
     Objetivo: Probar la funcionalidad de buscar autos con un año no numerico
     Datos de prueba: 
                     Año: 'AAAA'
+                    Estado del Vehículo: Vacío
+                    Tipo de venta: Vacío
+                    Precio minimo: Vacío
+                    Precio maximo: Vacío
     Resultado esperado: Que al digitar un año no numerico, salte el aviso de "El campo Año debe ser un número."
     */
-    it('Verificar el realizar una busqueda con un año no numerico', function () {
+    it('Verificar el realizar una búsqueda con un año no numérico', function () {
         
         cy.get('#VehicleYear').type('AAAA');
 
@@ -20,7 +24,6 @@ describe('Clients', function () {
             'contain.text',
             'El campo Año debe ser un número.'
           );
-        
     });
     /*
     Nombre de la prueba: Verificar Busqueda con datos Validos
@@ -34,7 +37,7 @@ describe('Clients', function () {
     Resultado esperado: Permitir la busqueda, y mostrarnos un Label con la frase 'Resultados de la búsqueda
     */
 
-    it('Verificar Busqueda con datos Validos', function () {
+    it('Verificar busqueda con datos validos', function () {
         cy.get('#VehicleYear').type('2010');
 
         cy.get('.row > :nth-child(1)   >:nth-child(1) .col-md-12 > select').select(1)
@@ -50,7 +53,6 @@ describe('Clients', function () {
             'contain.text',
             'Resultados de la búsqueda'
           );
-
     });
     
     afterEach(function () {
